@@ -24,7 +24,7 @@ public class ActivityController {
     ActivityService activityService;
 
     /**
-     * 获取所有的新闻信息
+     * 获取所有的活动信息
      *
      * @return
      */
@@ -32,28 +32,28 @@ public class ActivityController {
     private Map<String, Object> listActivity() {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         List<Activity> list = new ArrayList<Activity>();
-        // 获取新闻列表
+        // 获取活动列表
         list = activityService.getActivityList();
         modelMap.put("newsList", list);
         return modelMap;
     }
 
     /**
-     * 通过id获取新闻
+     * 通过id获取活动
      *
      * @return
      */
     @RequestMapping(value = "/getactivitybyid", method = RequestMethod.GET)
     private Map<String, Object> latestActivity(@RequestParam(value="id" ,required =false )int id) {
         Map<String, Object> modelMap = new HashMap<String, Object>();
-        // 获取新闻
+        // 获取活动
         Activity activity = activityService.getActivityById(id);
         modelMap.put("newsList", activity);
         return modelMap;
     }
 
     /**
-     * 分页获取新闻信息
+     * 分页获取活动信息
      *
      * @return
      */
@@ -61,7 +61,7 @@ public class ActivityController {
     private Map<String, Object> getLatestActivity(@RequestParam(value="offset" ,required =false )int offset,
                                              @RequestParam(value="limit" ,required =false )int limit) {
         Map<String, Object> modelMap = new HashMap<String, Object>();
-        // 获取区域信息
+        // 获取活动信息
         List<Activity> list = activityService.getLatestActivity(offset,limit);
         modelMap.put("activitylist", list);
         return modelMap;
