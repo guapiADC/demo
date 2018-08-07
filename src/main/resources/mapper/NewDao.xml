@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imooc.demo.dao.NewDao">
+    <select id="queryNew" resultType="com.imooc.demo.entity.New">
+        SELECT id, title,image_url,content, created_date, last_edit_date
+        FROM wc_news
+        ORDER BY id
+        DESC
+    </select>
+    <select id="queryNewById" resultType="com.imooc.demo.entity.New">
+        SELECT id, title,image_url,content, created_date, last_edit_date
+        FROM wc_news
+        WHERE
+        id=#{id}
+    </select>
+
+    <select id="queryLatestNew" resultType="com.imooc.demo.entity.New">
+        SELECT id, title,image_url,content, created_date, last_edit_date
+        FROM wc_news
+        ORDER BY id DESC
+        LIMIT #{offset},#{limit}
+    </select>
+
+</mapper>
